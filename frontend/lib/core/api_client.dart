@@ -10,8 +10,7 @@ class ApiResponse {
 }
 
 class ApiClient {
-  static const String baseUrl = 'http://localhost:8000/api/v1';
-
+  static const String baseUrl = 'https://aasara-api.onrender.com/api/v1';
   Future<Map<String, String>> _getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('access_token');
@@ -26,8 +25,7 @@ class ApiClient {
       final response = await http.get(Uri.parse('$baseUrl$endpoint'), headers: await _getHeaders());
       return _handleResponse(response);
     } catch (e) {
-      if (e is Exception && e.toString().contains('API Error')) rethrow;
-      throw Exception('Unable to connect to server. Please check your connection.');
+      rethrow;
     }
   }
 
@@ -41,8 +39,7 @@ class ApiClient {
       );
       return _handleResponse(response);
     } catch (e) {
-      if (e is Exception && e.toString().contains('API Error')) rethrow;
-      throw Exception('Unable to connect to server. Please check your connection.');
+      rethrow;
     }
   }
 
@@ -56,8 +53,7 @@ class ApiClient {
       );
       return _handleResponse(response);
     } catch (e) {
-      if (e is Exception && e.toString().contains('API Error')) rethrow;
-      throw Exception('Unable to connect to server. Please check your connection.');
+      rethrow;
     }
   }
 
@@ -66,8 +62,7 @@ class ApiClient {
       final response = await http.delete(Uri.parse('$baseUrl$endpoint'), headers: await _getHeaders());
       return _handleResponse(response);
     } catch (e) {
-      if (e is Exception && e.toString().contains('API Error')) rethrow;
-      throw Exception('Unable to connect to server. Please check your connection.');
+      rethrow;
     }
   }
 
@@ -82,8 +77,7 @@ class ApiClient {
       );
       return _handleResponse(response);
     } catch (e) {
-      if (e is Exception && e.toString().contains('API Error')) rethrow;
-      throw Exception('Unable to connect to server. Please check your connection.');
+      rethrow;
     }
   }
 
